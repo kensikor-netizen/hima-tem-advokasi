@@ -5,128 +5,147 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HIMA TEM - Advokasi</title>
 
+<link rel="icon" href="logo.png">
+
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-
 body {
+  margin:0;
   font-family: 'Segoe UI', sans-serif;
-  background: #050505;
-  color: white;
+  background: radial-gradient(circle at top, #0a1f2b, #000);
+  color:white;
 }
 
-/* LOADER */
-#loader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s;
-}
-
-.loader-text {
-  color: #00eaff;
-  font-size: 24px;
-  animation: glow 1.5s infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 5px #00eaff; }
-  to { text-shadow: 0 0 20px #00eaff, 0 0 40px #00eaff; }
-}
-
-/* NAV */
+/* NAVBAR */
 nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 30px;
-  background: rgba(0,0,0,0.8);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
 }
 
-nav h2 { color: #00eaff; }
+.logo {
+  display:flex;
+  align-items:center;
+}
+
+.logo img {
+  width:45px;
+  margin-right:10px;
+}
+
+.logo h2 {
+  color:#00eaff;
+}
 
 nav a {
-  color: white;
-  margin-left: 15px;
-  text-decoration: none;
+  margin-left:20px;
+  text-decoration:none;
+  color:white;
+}
+
+nav a:hover {
+  color:#00eaff;
 }
 
 /* HERO */
 .hero {
-  text-align: center;
-  padding: 80px 20px;
-  background: radial-gradient(circle, #0a2a33, #000);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:80px 50px;
+  flex-wrap:wrap;
 }
 
-.hero h1 {
-  font-size: 45px;
-  color: #00eaff;
+.hero-text {
+  max-width:500px;
 }
 
-.hero p { color: #aaa; }
+.hero-text h1 {
+  font-size:50px;
+  color:#00eaff;
+}
+
+.hero-text span {
+  color:white;
+}
+
+.hero-text p {
+  color:#aaa;
+  margin:20px 0;
+}
+
+.badge {
+  border:1px solid #00eaff;
+  padding:8px 12px;
+  margin:5px;
+  display:inline-block;
+  border-radius:10px;
+}
+
+.hero img {
+  width:280px;
+  filter: drop-shadow(0 0 20px #00eaff);
+}
 
 /* CARD */
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 40px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  padding:30px;
 }
 
 .card {
-  width: 280px;
-  margin: 15px;
-  padding: 20px;
-  border-radius: 20px;
+  width:300px;
+  margin:15px;
+  padding:25px;
+  border-radius:20px;
   background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 20px rgba(0,255,255,0.2);
-  transition: 0.3s;
+  box-shadow:0 0 20px rgba(0,255,255,0.2);
+  text-align:center;
+  transition:0.3s;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(0,255,255,0.5);
+  transform: translateY(-10px);
+  box-shadow:0 0 40px rgba(0,255,255,0.5);
 }
 
-.card h3 { color: #00eaff; }
+.card h3 {
+  color:#00eaff;
+}
 
 button {
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #00eaff;
-  background: transparent;
-  color: #00eaff;
-  border-radius: 10px;
-  cursor: pointer;
+  margin-top:15px;
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  background:#00eaff;
+  cursor:pointer;
 }
 
-button:hover {
-  background: #00eaff;
-  color: black;
-}
-
+/* FOOTER */
 footer {
-  text-align: center;
-  padding: 20px;
-  color: gray;
+  margin-top:50px;
+  padding:20px;
+  text-align:center;
+  color:gray;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADING -->
-<div id="loader">
-  <div class="loader-text">Loading HIMA TEM...</div>
-</div>
-
 <nav>
-  <h2>HIMA TEM</h2>
+  <div class="logo">
+    <img src="logo.png">
+    <h2>HIMA TEM</h2>
+  </div>
+
   <div>
-    <a href="#">Home</a>
+    <a href="#">Beranda</a>
     <a href="#lapor">Laporan</a>
     <a href="#saran">Saran</a>
     <a href="#cerita">Cerita</a>
@@ -134,44 +153,45 @@ footer {
 </nav>
 
 <section class="hero">
-  <h1>Divisi Advokasi</h1>
-  <p>Wadah aspirasi mahasiswa</p>
+  <div class="hero-text">
+    <h1>SUARAMU <span>BERARTI</span></h1>
+    <p>Wadah aspirasi mahasiswa secara aman dan terpercaya</p>
+
+    <div class="badge">Aman</div>
+    <div class="badge">Rahasia</div>
+    <div class="badge">Terpercaya</div>
+  </div>
+
+  <img src="logo.png">
 </section>
 
 <div class="container">
 
   <div class="card" id="lapor">
-    <h3>📢 Laporan</h3>
-    <button onclick="openForm('lapor')">Isi</button>
+    <h3>Laporan Masalah</h3>
+    <p>Laporkan kejadian yang kamu alami</p>
+    <button onclick="openForm('lapor')">Buat Laporan</button>
   </div>
 
   <div class="card" id="saran">
-    <h3>💡 Saran</h3>
-    <button onclick="openForm('saran')">Isi</button>
+    <h3>Saran</h3>
+    <p>Berikan masukan untuk himpunan</p>
+    <button onclick="openForm('saran')">Kirim Saran</button>
   </div>
 
   <div class="card" id="cerita">
-    <h3>🤝 Cerita</h3>
-    <button onclick="openForm('cerita')">Isi</button>
+    <h3>Teman Cerita</h3>
+    <p>Berbagi cerita dengan aman</p>
+    <button onclick="openForm('cerita')">Mulai Cerita</button>
   </div>
 
 </div>
 
 <footer>
-© 2026 HIMA TEM - Advokasi
+© 2026 HIMA TEM - Divisi Advokasi
 </footer>
 
 <script>
-// FIX LOADER (ANTI STUCK)
-setTimeout(function(){
-  var loader = document.getElementById("loader");
-  if(loader){
-    loader.style.opacity = "0";
-    setTimeout(() => loader.style.display = "none", 500);
-  }
-}, 1500);
-
-// FORM HANDLER
 function openForm(type){
   if(type === "lapor"){
     window.open("https://docs.google.com/forms/d/e/1FAIpQLSe5jgCIKMeCkfTu1yIWHnOEAVuyD4E9KMC7PAPfbveqpgbxuw/viewform");
