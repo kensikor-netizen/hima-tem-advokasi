@@ -1,16 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIMA TEM - Advokasi</title>
+
+<link rel="icon" href="logo.png">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  color:white;
+}
+
+/* PARTICLE BACKGROUND */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* NAVBAR */
+nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
+}
+
+.logo {
+  display:flex;
+  align-items:center;
+}
+
+.logo img {
+  width:45px;
+  margin-right:10px;
+  filter: drop-shadow(0 0 10px cyan);
+}
+
+.logo h2 {
+  color:#00eaff;
+}
+
+nav a {
+  margin-left:20px;
+  text-decoration:none;
+  color:white;
+}
+
+nav a:hover {
+  color:#00eaff;
+}
+
+/* HERO */
+.hero {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:80px 50px;
+  flex-wrap:wrap;
+}
+
+.hero-text {
+  max-width:500px;
+}
+
+.hero-text h1 {
+  font-size:50px;
+  color:#00eaff;
+}
+
+.hero-text span {
+  color:white;
+}
+
+.hero-text p {
+  color:#aaa;
+  margin:20px 0;
+}
+
+.badge {
+  border:1px solid #00eaff;
+  padding:8px 12px;
+  margin:5px;
+  display:inline-block;
+  border-radius:10px;
+}
+
+/* HERO IMAGE */
+.hero img {
+  width:250px;
+}
+
+/* CARD */
+.container {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  padding:30px;
+}
+
+.card {
+  width:300px;
+  margin:15px;
+  padding:25px;
+  border-radius:20px;
+  background: rgba(255,255,255,0.05);
+  box-shadow:0 0 20px rgba(0,255,255,0.2);
+  text-align:center;
+  transition:0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow:0 0 40px rgba(0,255,255,0.5);
+}
+
+.card h3 {
+  color:#00eaff;
+}
+
+button {
+  margin-top:15px;
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  background:#00eaff;
+  cursor:pointer;
+}
+
+/* SECTION */
+.section {
+  text-align:center;
+  padding:50px 20px;
+}
+
+.section h2 {
+  color:#00eaff;
+}
+
+/* PRIVACY */
+.privacy {
+  font-size:12px;
+  color:gray;
+  max-width:650px;
+  margin:15px auto;
+  line-height:1.6;
+}
+
+/* FOOTER */
+footer {
+  padding:20px;
+  text-align:center;
+  color:gray;
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<nav>
+  <div class="logo">
+    <img src="logo.png">
+    <h2>HIMA TEM</h2>
+  </div>
+
+  <div>
+    <a href="#">Home</a>
+    <a href="#lapor">Laporan</a>
+    <a href="#saran">Saran</a>
+    <a href="#cerita">Cerita</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>SUARAMU <span>BERARTI</span></h1>
+    <p>Wadah aspirasi mahasiswa secara aman dan terpercaya</p>
+
+    <div class="badge">Aman</div>
+    <div class="badge">Rahasia</div>
+    <div class="badge">Terpercaya</div>
+  </div>
+
+  <img src="logo.png">
+</section>
+
+<div class="container">
+
+  <div class="card" id="lapor">
+    <h3>Laporan Masalah</h3>
+    <p>Laporkan kejadian yang kamu alami</p>
+    <button onclick="openForm('lapor')">Buat Laporan</button>
+  </div>
+
+  <div class="card" id="saran">
+    <h3>Saran</h3>
+    <p>Berikan masukan untuk himpunan</p>
+    <button onclick="openForm('saran')">Kirim Saran</button>
+  </div>
+
+  <div class="card" id="cerita">
+    <h3>Teman Cerita</h3>
+    <p>Berbagi cerita dengan aman</p>
+    <button onclick="openForm('cerita')">Mulai Cerita</button>
+  </div>
+
+</div>
+
+<div class="section">
+  <h2>Data Advokasi</h2>
+  <p>128 Laporan | 56 Saran | 34 Cerita</p>
+</div>
+
+<div class="section">
+  <h2>Tentang Advokasi</h2>
+  <p>Divisi Advokasi HIMA TEM hadir untuk membantu mahasiswa menyampaikan aspirasi secara aman dan terpercaya.</p>
+</div>
+
+<div class="section">
+  <h2>Kontak</h2>
+  <p>Email: advokasi@email.com</p>
+  <p>Instagram: @himateam</p>
+</div>
+
 <footer>
 © 2026 HIMA TEM - Divisi Advokasi
 
-<p style="
-  font-size:12px; 
-  color:gray; 
-  max-width:600px; 
-  margin:10px auto;
-  line-height:1.5;
-">
+<p class="privacy">
 Seluruh data yang dikirim melalui website ini akan dijaga kerahasiaannya oleh Divisi Advokasi HIMA TEM. 
 Mahasiswa bebas mencantumkan nama atau tetap anonim. 
-Segala bentuk laporan akan ditindaklanjuti secara profesional dan tidak disebarluaskan tanpa izin.
+Segala bentuk laporan akan ditindaklanjuti secara profesional dan tidak disebarluaskan tanpa izin. 
+Dilarang mengirim laporan palsu atau mengandung unsur fitnah.
 </p>
 
 </footer>
+
+<!-- PARTICLES -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 80 },
+    size: { value: 3 },
+    color: { value: "#00eaff" },
+    line_linked: { enable: true, color: "#00eaff" },
+    move: { speed: 2 }
+  }
+});
+
+// FORM
+function openForm(type){
+  if(type === "lapor"){
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSe5jgCIKMeCkfTu1yIWHnOEAVuyD4E9KMC7PAPfbveqpgbxuw/viewform");
+  }
+  if(type === "saran"){
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLScMxTlqohZTMCty3Jg9NSECTIbbZaAgy4CQ652uOhPQx4uL_A/viewform");
+  }
+  if(type === "cerita"){
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSeJuq-gawGni8c804qlugmXUGKoKf1gT-eQfAfFCalCxJQI8w/viewform");
+  }
+}
+</script>
+
+</body>
+</html>
