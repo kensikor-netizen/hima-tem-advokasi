@@ -8,15 +8,18 @@
 <link rel="icon" href="logo.png">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
+  margin:0;
   font-family: 'Segoe UI', sans-serif;
   background: #000;
   color:white;
 }
 
-/* PARTICLE BACKGROUND */
+/* PARTICLE */
 #particles-js {
   position: fixed;
   width: 100%;
@@ -28,10 +31,8 @@ body {
 nav {
   display:flex;
   justify-content:space-between;
-  align-items:center;
   padding:15px 40px;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.7);
 }
 
 .logo {
@@ -51,8 +52,8 @@ nav {
 
 nav a {
   margin-left:20px;
-  text-decoration:none;
   color:white;
+  text-decoration:none;
 }
 
 nav a:hover {
@@ -61,42 +62,17 @@ nav a:hover {
 
 /* HERO */
 .hero {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:80px 50px;
-  flex-wrap:wrap;
+  text-align:center;
+  padding:100px 20px;
 }
 
-.hero-text {
-  max-width:500px;
-}
-
-.hero-text h1 {
+.hero h1 {
   font-size:50px;
   color:#00eaff;
 }
 
-.hero-text span {
-  color:white;
-}
-
-.hero-text p {
+.hero p {
   color:#aaa;
-  margin:20px 0;
-}
-
-.badge {
-  border:1px solid #00eaff;
-  padding:8px 12px;
-  margin:5px;
-  display:inline-block;
-  border-radius:10px;
-}
-
-/* HERO IMAGE */
-.hero img {
-  width:250px;
 }
 
 /* CARD */
@@ -104,11 +80,11 @@ nav a:hover {
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  padding:30px;
+  padding:40px;
 }
 
 .card {
-  width:300px;
+  width:280px;
   margin:15px;
   padding:25px;
   border-radius:20px;
@@ -128,8 +104,8 @@ nav a:hover {
 }
 
 button {
-  margin-top:15px;
-  padding:10px 15px;
+  margin-top:10px;
+  padding:10px;
   border:none;
   border-radius:10px;
   background:#00eaff;
@@ -146,15 +122,20 @@ button {
   color:#00eaff;
 }
 
+/* PRIVACY */
+.privacy {
+  font-size:12px;
+  color:gray;
+  max-width:600px;
+  margin:auto;
+  margin-top:20px;
+}
+
 /* FOOTER */
 footer {
-  padding:20px;
   text-align:center;
+  padding:20px;
   color:gray;
-  <p style="font-size:12px; color:gray; max-width:600px; margin:auto;">
-Seluruh data yang dikirim melalui website ini akan dijaga kerahasiaannya oleh Divisi Advokasi HIMA TEM. 
-Mahasiswa bebas mencantumkan nama atau tetap anonim.
-</p>
 }
 </style>
 </head>
@@ -171,81 +152,72 @@ Mahasiswa bebas mencantumkan nama atau tetap anonim.
 
   <div>
     <a href="#">Home</a>
-    <a href="#lapor">Laporan</a>
-    <a href="#saran">Saran</a>
-    <a href="#cerita">Cerita</a>
+    <a href="#menu">Menu</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#kontak">Kontak</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-text">
-    <h1>SUARAMU <span>BERARTI</span></h1>
-    <p>Wadah aspirasi mahasiswa secara aman dan terpercaya</p>
-
-    <div class="badge">Aman</div>
-    <div class="badge">Rahasia</div>
-    <div class="badge">Terpercaya</div>
-  </div>
-
-  <img src="logo.png">
+  <h1>SUARAMU BERARTI</h1>
+  <p>Wadah aspirasi mahasiswa secara aman dan terpercaya</p>
 </section>
 
-<div class="container">
+<div class="container" id="menu">
 
-  <div class="card" id="lapor">
+  <div class="card">
     <h3>Laporan Masalah</h3>
-    <p>Laporkan kejadian yang kamu alami</p>
-    <button onclick="openForm('lapor')">Buat Laporan</button>
+    <button onclick="openForm('lapor')">Isi</button>
   </div>
 
-  <div class="card" id="saran">
+  <div class="card">
     <h3>Saran</h3>
-    <p>Berikan masukan untuk himpunan</p>
-    <button onclick="openForm('saran')">Kirim Saran</button>
+    <button onclick="openForm('saran')">Isi</button>
   </div>
 
-  <div class="card" id="cerita">
+  <div class="card">
     <h3>Teman Cerita</h3>
-    <p>Berbagi cerita dengan aman</p>
-    <button onclick="openForm('cerita')">Mulai Cerita</button>
+    <button onclick="openForm('cerita')">Isi</button>
   </div>
 
 </div>
 
 <div class="section">
-  <h2>Data Advokasi</h2>
-  <p>128 Laporan | 56 Saran | 34 Cerita</p>
+  <h2>Statistik</h2>
+  <p>Update manual dari Google Sheets</p>
 </div>
 
-<div class="section">
+<div class="section" id="tentang">
   <h2>Tentang Advokasi</h2>
-  <p>Divisi Advokasi HIMA TEM hadir untuk membantu mahasiswa menyampaikan aspirasi secara aman dan terpercaya.</p>
+  <p>Divisi Advokasi HIMA TEM membantu mahasiswa menyampaikan aspirasi dengan aman.</p>
 </div>
 
-<div class="section">
+<div class="section" id="kontak">
   <h2>Kontak</h2>
   <p>Email: advokasi@email.com</p>
-  <p>Instagram: @himateam</p>
 </div>
 
 <footer>
-© 2026 HIMA TEM - Divisi Advokasi
+© 2026 HIMA TEM - Advokasi
+
+<p class="privacy">
+Data yang dikirim akan dijaga kerahasiaannya oleh Divisi Advokasi HIMA TEM.
+Nama boleh dicantumkan atau anonim.
+</p>
 </footer>
 
-<!-- PARTICLES -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
 <script>
 particlesJS("particles-js", {
   particles: {
-    number: { value: 80 },
+    number: { value: 70 },
     size: { value: 3 },
     color: { value: "#00eaff" },
-    line_linked: { enable: true, color: "#00eaff" },
     move: { speed: 2 }
   }
 });
 
-// FORM
 function openForm(type){
   if(type === "lapor"){
     window.open("https://docs.google.com/forms/d/e/1FAIpQLSe5jgCIKMeCkfTu1yIWHnOEAVuyD4E9KMC7PAPfbveqpgbxuw/viewform");
