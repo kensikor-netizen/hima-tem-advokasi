@@ -8,11 +8,20 @@
 <link rel="icon" href="logo.png">
 
 <style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
 body {
-  margin:0;
   font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #0a1f2b, #000);
+  background: #000;
   color:white;
+}
+
+/* PARTICLE BACKGROUND */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 /* NAVBAR */
@@ -33,6 +42,7 @@ nav {
 .logo img {
   width:45px;
   margin-right:10px;
+  filter: drop-shadow(0 0 10px cyan);
 }
 
 .logo h2 {
@@ -84,9 +94,9 @@ nav a:hover {
   border-radius:10px;
 }
 
+/* HERO IMAGE */
 .hero img {
-  width:280px;
-  filter: drop-shadow(0 0 20px #00eaff);
+  width:250px;
 }
 
 /* CARD */
@@ -126,9 +136,18 @@ button {
   cursor:pointer;
 }
 
+/* SECTION */
+.section {
+  text-align:center;
+  padding:50px 20px;
+}
+
+.section h2 {
+  color:#00eaff;
+}
+
 /* FOOTER */
 footer {
-  margin-top:50px;
   padding:20px;
   text-align:center;
   color:gray;
@@ -138,6 +157,8 @@ footer {
 
 <body>
 
+<div id="particles-js"></div>
+
 <nav>
   <div class="logo">
     <img src="logo.png">
@@ -145,7 +166,7 @@ footer {
   </div>
 
   <div>
-    <a href="#">Beranda</a>
+    <a href="#">Home</a>
     <a href="#lapor">Laporan</a>
     <a href="#saran">Saran</a>
     <a href="#cerita">Cerita</a>
@@ -187,11 +208,40 @@ footer {
 
 </div>
 
+<div class="section">
+  <h2>Data Advokasi</h2>
+  <p>128 Laporan | 56 Saran | 34 Cerita</p>
+</div>
+
+<div class="section">
+  <h2>Tentang Advokasi</h2>
+  <p>Divisi Advokasi HIMA TEM hadir untuk membantu mahasiswa menyampaikan aspirasi secara aman dan terpercaya.</p>
+</div>
+
+<div class="section">
+  <h2>Kontak</h2>
+  <p>Email: advokasi@email.com</p>
+  <p>Instagram: @himateam</p>
+</div>
+
 <footer>
 © 2026 HIMA TEM - Divisi Advokasi
 </footer>
 
+<!-- PARTICLES -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 <script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 80 },
+    size: { value: 3 },
+    color: { value: "#00eaff" },
+    line_linked: { enable: true, color: "#00eaff" },
+    move: { speed: 2 }
+  }
+});
+
+// FORM
 function openForm(type){
   if(type === "lapor"){
     window.open("https://docs.google.com/forms/d/e/1FAIpQLSe5jgCIKMeCkfTu1yIWHnOEAVuyD4E9KMC7PAPfbveqpgbxuw/viewform");
