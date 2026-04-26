@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIMA TEM - Advokasi</title>
+
+<link rel="icon" href="logo.png">
+
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -129,18 +138,15 @@ button:hover { background:#00c3d9; }
   margin:15px auto;
 }
 
-/* 🔥 FIX INPUT DARK MODE + PREMIUM STYLE */
+/* ✅ FIX INPUT DARK MODE */
 input, textarea {
   width:80%;
   padding:10px;
   margin:10px;
   border-radius:10px;
   border:none;
-
-  background:rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.1);
   color:white;
-  backdrop-filter:blur(5px);
-  transition:0.3s;
 }
 
 /* placeholder */
@@ -148,7 +154,7 @@ input::placeholder, textarea::placeholder {
   color:#aaa;
 }
 
-/* saat diketik */
+/* focus efek */
 input:focus, textarea:focus {
   outline:none;
   box-shadow:0 0 10px #00eaff;
@@ -180,3 +186,102 @@ input:focus, textarea:focus {
   .hero img { margin-top:20px; }
 }
 </style>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<nav>
+  <div class="logo">
+    <img src="logo.png">
+    <h2>HIMA TEM</h2>
+  </div>
+
+  <div>
+    <a href="#">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#faq">FAQ</a>
+    <a href="#privacy">Privasi</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>SUARAMU LAYAK DIDENGAR</h1>
+    <p>Kamu tidak sendiri. Kami siap mendengarkan dan membantu setiap permasalahan mahasiswa.</p>
+    <p style="color:#888;">Semua laporan dijaga kerahasiaannya dan akan ditindaklanjuti oleh tim advokasi.</p>
+
+    <div class="badge">Aman & Rahasia</div>
+    <div class="badge">Didengar</div>
+    <div class="badge">Ditindaklanjuti</div>
+
+    <br><br>
+    <button onclick="document.querySelector('.container').scrollIntoView()">Mulai Sekarang</button>
+  </div>
+
+  <img src="logo.png" width="250">
+</section>
+
+<div class="container" id="menu">
+  <div class="card">
+    <h3>Laporkan Masalah</h3>
+    <button onclick="showPage('laporPage')">Masuk</button>
+  </div>
+
+  <div class="card">
+    <h3>Kritik & Saran</h3>
+    <button onclick="showPage('saranPage')">Masuk</button>
+  </div>
+
+  <div class="card">
+    <h3>Teman Cerita</h3>
+    <button onclick="showPage('ceritaPage')">Masuk</button>
+  </div>
+</div>
+
+<div id="ceritaPage" class="page">
+  <h2>Teman Cerita</h2>
+
+  <form action="https://formspree.io/f/xdayjjob" method="POST" onsubmit="handleSubmit()">
+    <input type="text" name="nama" placeholder="Nama (opsional)">
+    <input type="email" name="email" placeholder="Email (wajib)" required>
+    <textarea name="cerita" placeholder="Tulis ceritamu..." required></textarea>
+    <button type="submit" id="btnKirim">Kirim Cerita</button>
+  </form>
+
+  <button onclick="backHome()">Kembali</button>
+</div>
+
+<div id="toast">Pesan berhasil dikirim 🙏</div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<script>
+particlesJS("particles-js", {
+  particles:{number:{value:80},size:{value:3},color:{value:"#00eaff"}}
+});
+
+function showPage(id){
+  document.querySelector(".hero").style.display="none";
+  document.querySelector(".container").style.display="none";
+  document.getElementById(id).style.display="block";
+}
+
+function backHome(){
+  document.querySelector(".hero").style.display="flex";
+  document.querySelector(".container").style.display="flex";
+  document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+}
+
+function handleSubmit(){
+  document.getElementById("btnKirim").innerText="Mengirim...";
+  setTimeout(()=>{
+    document.getElementById("toast").style.display="block";
+  },800);
+}
+</script>
+
+</body>
+</html>
