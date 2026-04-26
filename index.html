@@ -68,7 +68,7 @@ nav {
 
 .hero-text p {
   color:#aaa;
-  margin:20px 0;
+  margin:15px 0;
 }
 
 .badge {
@@ -79,7 +79,18 @@ nav {
   border-radius:10px;
 }
 
-.hero img { width:250px; }
+/* BUTTON */
+button {
+  margin-top:15px;
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  background:#00eaff;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover { background:#00c3d9; }
 
 /* CARD */
 .container {
@@ -106,18 +117,6 @@ nav {
 }
 
 .card h3 { color:#00eaff; }
-
-button {
-  margin-top:15px;
-  padding:10px 15px;
-  border:none;
-  border-radius:10px;
-  background:#00eaff;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-button:hover { background:#00c3d9; }
 
 /* PAGE */
 .page {
@@ -163,19 +162,38 @@ footer {
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <h1>SUARAMU <span>BERARTI</span></h1>
-    <p>Wadah aspirasi mahasiswa secara aman dan terpercaya</p>
 
-    <div class="badge">Aman</div>
-    <div class="badge">Rahasia</div>
-    <div class="badge">Terpercaya</div>
+    <h1>SUARAMU <span>LAYAK DIDENGAR</span></h1>
+
+    <p>
+      Divisi Advokasi HIMA TEM hadir sebagai ruang aman bagi mahasiswa untuk menyampaikan
+      aspirasi, keluhan, dan cerita tanpa rasa takut.
+    </p>
+
+    <p style="color:#888;">
+      Kami menjaga kerahasiaan, mendengarkan dengan empati,
+      dan berkomitmen menindaklanjuti setiap laporan.
+    </p>
+
+    <div class="badge">Aman & Rahasia</div>
+    <div class="badge">Didengar</div>
+    <div class="badge">Ditindaklanjuti</div>
+
+    <br><br>
+
+    <button onclick="document.querySelector('.container').scrollIntoView()">
+      Mulai Sekarang
+    </button>
+
   </div>
 
-  <img src="logo.png">
+  <img src="logo.png" width="250">
 </section>
 
+<!-- MENU -->
 <div class="container">
 
   <div class="card">
@@ -186,7 +204,7 @@ footer {
 
   <div class="card">
     <h3>Kritik & Saran</h3>
-    <p>Berikan kritik dan saran untuk prodi ataupun himpunan</p>
+    <p>Berikan kritik dan saran untuk himpunan</p>
     <button onclick="showPage('saranPage')">Masuk</button>
   </div>
 
@@ -211,7 +229,7 @@ footer {
 <div id="saranPage" class="page">
   <h2>Kritik & Saran</h2>
   <p>Sampaikan kritik dan saran secara bebas.</p>
-  <p class="privacy">Identitas tidak akan diketahui. Gunakan dengan bijak.</p>
+  <p class="privacy">Identitas tidak akan diketahui.</p>
   <button onclick="openAnon()">Kritik & Saran</button><br><br>
   <button onclick="backHome()">Kembali</button>
 </div>
@@ -227,25 +245,19 @@ footer {
 
   <button onclick="ceritaLangsung()">Teman Cerita Langsung</button><br><br>
 
-  <div>
-    <h3 style="color:#00eaff;">Cerita Online</h3>
-    <p style="color:#aaa;">Silakan isi cerita kamu di bawah ini.</p>
+  <h3 style="color:#00eaff;">Cerita Online</h3>
 
-    <form action="https://formspree.io/f/xdayjjob" method="POST" onsubmit="handleSubmit()">
+  <form action="https://formspree.io/f/xdayjjob" method="POST" onsubmit="handleSubmit()">
+    <input type="text" name="nama" placeholder="Nama (opsional)" minlength="2"
+    style="width:80%;padding:10px;margin:10px;border-radius:8px;border:none;"><br>
 
-      <input type="text" name="nama" placeholder="EMAIL DAN NAMA(WAJIB)" minlength="2"
-      style="width:80%;padding:10px;margin:10px;border-radius:8px;border:none;"><br>
+    <textarea name="cerita" placeholder="Tulis ceritamu..." required minlength="10"
+    style="width:80%;height:120px;padding:10px;margin:10px;border-radius:8px;border:none;"></textarea><br>
 
-      <textarea name="cerita" placeholder="Tulis ceritamu......pastikan sudah menuliskan email agar cerita dapat dilanjutkan dan ditanggapi di Email " required minlength="10"
-      style="width:80%;height:120px;padding:10px;margin:10px;border-radius:8px;border:none;"></textarea><br>
+    <button type="submit" id="btnKirim">Kirim Cerita</button>
+  </form>
 
-      <button type="submit" id="btnKirim">Kirim Cerita</button>
-    </form>
-
-    <p id="notif" style="color:#00eaff; display:none; margin-top:10px;">
-    Cerita berhasil dikirim 🙏
-    </p>
-  </div>
+  <p id="notif" style="display:none;color:#00eaff;">Cerita berhasil dikirim 🙏</p>
 
   <br>
   <button onclick="backHome()">Kembali</button>
@@ -281,7 +293,7 @@ function backHome(){
 
 function openForm(type){
   if(type==="lapor"){
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLSelJCJ8AZJ-ZVruC2YTLw15faBU29II84A8YV8ocYZlHcBdzQ/viewform?usp=header");
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSelJCJ8AZJ-ZVruC2YTLw15faBU29II84A8YV8ocYZlHcBdzQ/viewform");
   }
 }
 
@@ -290,7 +302,7 @@ function openAnon(){
 }
 
 function ceritaLangsung(){
-  window.open("https://docs.google.com/forms/d/e/1FAIpQLSf66VI_GwE8l_5kfrj0xlXivlcNGh1FmhfuBULLyQ-BDACAsw/viewform?usp=header");
+  window.open("https://docs.google.com/forms/d/e/1FAIpQLSf66VI_GwE8l_5kfrj0xlXivlcNGh1FmhfuBULLyQ-BDACAsw/viewform");
 }
 
 function handleSubmit(){
