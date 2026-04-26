@@ -48,14 +48,6 @@ nav {
 
 .logo h2 { color:#00eaff; }
 
-nav a {
-  margin-left:20px;
-  text-decoration:none;
-  color:white;
-}
-
-nav a:hover { color:#00eaff; }
-
 /* HERO */
 .hero {
   display:flex;
@@ -126,7 +118,7 @@ button {
   cursor:pointer;
 }
 
-/* PAGE DETAIL */
+/* PAGE */
 .page {
   display:none;
   text-align:center;
@@ -140,7 +132,6 @@ button {
   color:gray;
   max-width:600px;
   margin:15px auto;
-  line-height:1.5;
 }
 
 /* FOOTER */
@@ -185,8 +176,8 @@ footer {
   </div>
 
   <div class="card">
-    <h3>Saran</h3>
-    <p>Berikan masukan untuk himpunan</p>
+    <h3>Kritik & Saran</h3>
+    <p>Berikan kritik dan saran untuk himpunan</p>
     <button onclick="showPage('saranPage')">Masuk</button>
   </div>
 
@@ -198,30 +189,30 @@ footer {
 
 </div>
 
-<!-- HALAMAN LAPOR -->
+<!-- LAPOR -->
 <div id="laporPage" class="page">
   <h2>Laporan Masalah</h2>
-  <p>Gunakan fitur ini untuk melaporkan kejadian yang kamu alami di lingkungan kampus.</p>
+  <p>Gunakan fitur ini untuk melaporkan kejadian di lingkungan kampus.</p>
   <p class="privacy">Data bersifat rahasia dan boleh anonim.</p>
-  <button onclick="openForm('lapor')">Lanjut ke Form</button><br>
+  <button onclick="openForm('lapor')">Lanjut ke Form</button><br><br>
   <button onclick="backHome()">Kembali</button>
 </div>
 
-<!-- HALAMAN SARAN -->
+<!-- KRITIK & SARAN -->
 <div id="saranPage" class="page">
-  <h2>Saran</h2>
-  <p>Berikan masukan untuk meningkatkan kualitas himpunan.</p>
-  <p class="privacy">Identitas tidak wajib diisi.</p>
-  <button onclick="openForm('saran')">Lanjut ke Form</button><br>
+  <h2>Kritik & Saran</h2>
+  <p>Sampaikan kritik dan saran secara bebas.</p>
+  <p class="privacy">Identitas tidak akan diketahui. Gunakan dengan bijak.</p>
+  <button onclick="openAnon()">Kritik & Saran</button><br><br>
   <button onclick="backHome()">Kembali</button>
 </div>
 
-<!-- HALAMAN CERITA -->
+<!-- CERITA -->
 <div id="ceritaPage" class="page">
   <h2>Teman Cerita</h2>
-  <p>Tempat aman untuk berbagi cerita dan keluh kesah.</p>
+  <p>Tempat aman untuk berbagi cerita.</p>
   <p class="privacy">Semua cerita dijaga kerahasiaannya.</p>
-  <button onclick="openForm('cerita')">Mulai Cerita</button><br>
+  <button onclick="openForm('cerita')">Mulai Cerita</button><br><br>
   <button onclick="backHome()">Kembali</button>
 </div>
 
@@ -229,7 +220,6 @@ footer {
 © 2026 HIMA TEM - Divisi Advokasi
 </footer>
 
-<!-- SCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
 <script>
@@ -258,12 +248,13 @@ function openForm(type){
   if(type==="lapor"){
     window.open("https://docs.google.com/forms/d/e/1FAIpQLSe5jgCIKMeCkfTu1yIWHnOEAVuyD4E9KMC7PAPfbveqpgbxuw/viewform");
   }
-  if(type==="saran"){
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLScMxTlqohZTMCty3Jg9NSECTIbbZaAgy4CQ652uOhPQx4uL_A/viewform");
-  }
   if(type==="cerita"){
     window.open("https://docs.google.com/forms/d/e/1FAIpQLSeJuq-gawGni8c804qlugmXUGKoKf1gT-eQfAfFCalCxJQI8w/viewform");
   }
+}
+
+function openAnon(){
+  window.open("https://share.google/dneet5ErrilcMorop");
 }
 </script>
 
