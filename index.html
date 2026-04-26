@@ -57,9 +57,7 @@ nav {
   flex-wrap:wrap;
 }
 
-.hero-text {
-  max-width:500px;
-}
+.hero-text { max-width:500px; }
 
 .hero-text h1 {
   font-size:50px;
@@ -116,7 +114,10 @@ button {
   border-radius:10px;
   background:#00eaff;
   cursor:pointer;
+  transition:0.3s;
 }
+
+button:hover { background:#00c3d9; }
 
 /* PAGE */
 .page {
@@ -132,6 +133,14 @@ button {
   color:gray;
   max-width:600px;
   margin:15px auto;
+}
+
+input, textarea {
+  outline:none;
+}
+
+input:focus, textarea:focus {
+  box-shadow:0 0 10px #00eaff;
 }
 
 /* FOOTER */
@@ -198,7 +207,7 @@ footer {
   <button onclick="backHome()">Kembali</button>
 </div>
 
-<!-- KRITIK & SARAN -->
+<!-- KRITIK -->
 <div id="saranPage" class="page">
   <h2>Kritik & Saran</h2>
   <p>Sampaikan kritik dan saran secara bebas.</p>
@@ -210,9 +219,35 @@ footer {
 <!-- CERITA -->
 <div id="ceritaPage" class="page">
   <h2>Teman Cerita</h2>
-  <p>Tempat aman untuk berbagi cerita.</p>
-  <p class="privacy">Semua cerita dijaga kerahasiaannya.</p>
-  <button onclick="openForm('cerita')">Mulai Cerita</button><br><br>
+  <p>Pilih cara kamu ingin berbagi cerita.</p>
+
+  <p class="privacy">
+  Semua cerita dijaga kerahasiaannya oleh Divisi Advokasi.
+  </p>
+
+  <button onclick="ceritaLangsung()">Teman Cerita Langsung</button><br><br>
+
+  <div>
+    <h3 style="color:#00eaff;">Cerita Online</h3>
+    <p style="color:#aaa;">Silakan isi cerita kamu di bawah ini.</p>
+
+    <form action="https://formspree.io/f/xdayjjob" method="POST" onsubmit="handleSubmit()">
+
+      <input type="text" name="nama" placeholder="Nama (opsional)" minlength="2"
+      style="width:80%;padding:10px;margin:10px;border-radius:8px;border:none;"><br>
+
+      <textarea name="cerita" placeholder="Tulis ceritamu..." required minlength="10"
+      style="width:80%;height:120px;padding:10px;margin:10px;border-radius:8px;border:none;"></textarea><br>
+
+      <button type="submit" id="btnKirim">Kirim Cerita</button>
+    </form>
+
+    <p id="notif" style="color:#00eaff; display:none; margin-top:10px;">
+    Cerita berhasil dikirim 🙏
+    </p>
+  </div>
+
+  <br>
   <button onclick="backHome()">Kembali</button>
 </div>
 
@@ -248,13 +283,21 @@ function openForm(type){
   if(type==="lapor"){
     window.open("https://docs.google.com/forms/d/e/1FAIpQLSelJCJ8AZJ-ZVruC2YTLw15faBU29II84A8YV8ocYZlHcBdzQ/viewform?usp=header");
   }
-  if(type==="cerita"){
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLSeJuq-gawGni8c804qlugmXUGKoKf1gT-eQfAfFCalCxJQI8w/viewform");
-  }
 }
 
 function openAnon(){
   window.open("https://share.google/dneet5ErrilcMorop");
+}
+
+function ceritaLangsung(){
+  window.open("https://docs.google.com/forms/d/e/1FAIpQLSf66VI_GwE8l_5kfrj0xlXivlcNGh1FmhfuBULLyQ-BDACAsw/viewform?usp=header");
+}
+
+function handleSubmit(){
+  document.getElementById("btnKirim").innerText="Mengirim...";
+  setTimeout(()=>{
+    document.getElementById("notif").style.display="block";
+  },1000);
 }
 </script>
 
