@@ -8,48 +8,52 @@
 <link rel="icon" href="logo.png">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-
-body {
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
   font-family:'Segoe UI',sans-serif;
-  background:#000;
+  background:linear-gradient(135deg,#000,#001a1f);
   color:white;
+  overflow-x:hidden;
 }
 
-/* PARTICLE */
-#particles-js {
+/* LOADING */
+#loading{
   position:fixed;
   width:100%;
   height:100%;
-  z-index:-1;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
 }
+.loader{
+  width:50px;height:50px;
+  border:5px solid #00eaff;
+  border-top:5px solid transparent;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{100%{transform:rotate(360deg);}}
 
 /* NAV */
-nav {
+nav{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   padding:15px 40px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(12px);
+  position:sticky;
+  top:0;
 }
+nav a{color:white;margin-left:15px;text-decoration:none;}
+nav a:hover{color:#00eaff;}
 
-.logo {
-  display:flex;
-  align-items:center;
-}
-
-.logo img {
-  width:45px;
-  margin-right:10px;
-  filter:drop-shadow(0 0 10px cyan);
-}
-
-.logo h2 { color:#00eaff; }
+.logo{display:flex;align-items:center;}
+.logo img{width:45px;margin-right:10px;}
 
 /* HERO */
-.hero {
+.hero{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -57,95 +61,86 @@ nav {
   flex-wrap:wrap;
 }
 
-.hero-text { max-width:500px; }
-
-.hero-text h1 {
+.hero h1{
   font-size:50px;
-  color:#00eaff;
+  background:linear-gradient(90deg,#00eaff,#00ffcc);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.hero-text span { color:white; }
+.hero p{color:#aaa;margin:15px 0;}
 
-.hero-text p {
-  color:#aaa;
-  margin:15px 0;
-}
-
-.badge {
-  border:1px solid #00eaff;
-  padding:8px 12px;
-  margin:5px;
-  display:inline-block;
-  border-radius:10px;
-}
-
-/* BUTTON */
-button {
-  margin-top:15px;
-  padding:10px 15px;
+button{
+  padding:12px 18px;
   border:none;
-  border-radius:10px;
-  background:#00eaff;
+  border-radius:12px;
+  background:linear-gradient(90deg,#00eaff,#00ffcc);
   cursor:pointer;
   transition:0.3s;
 }
-
-button:hover { background:#00c3d9; }
+button:hover{transform:scale(1.05);}
 
 /* CARD */
-.container {
+.container{
   display:flex;
-  justify-content:center;
   flex-wrap:wrap;
+  justify-content:center;
   padding:30px;
 }
 
-.card {
+.card{
   width:300px;
   margin:15px;
   padding:25px;
   border-radius:20px;
   background:rgba(255,255,255,0.05);
-  box-shadow:0 0 20px rgba(0,255,255,0.2);
-  text-align:center;
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(0,255,255,0.2);
   transition:0.3s;
 }
-
-.card:hover {
+.card:hover{
   transform:translateY(-10px);
-  box-shadow:0 0 40px rgba(0,255,255,0.5);
+  box-shadow:0 0 30px #00eaff;
 }
 
-.card h3 { color:#00eaff; }
+.page{display:none;text-align:center;padding:100px 20px;}
 
-/* PAGE */
-.page {
+input,textarea{
+  width:80%;
+  padding:10px;
+  margin:10px;
+  border-radius:10px;
+  border:none;
+}
+
+/* TOAST */
+#toast{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#00eaff;
+  color:black;
+  padding:10px;
+  border-radius:8px;
   display:none;
-  text-align:center;
-  padding:100px 20px;
 }
 
-.page h2 { color:#00eaff; }
-
-.privacy {
-  font-size:13px;
-  color:gray;
-  max-width:650px;
-  margin:15px auto;
+/* SCROLL ANIM */
+.fade{
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s;
 }
-
-/* FOOTER */
-footer {
-  padding:20px;
-  text-align:center;
-  color:gray;
+.show{
+  opacity:1;
+  transform:translateY(0);
 }
 </style>
 </head>
 
 <body>
 
-<div id="particles-js"></div>
+<div id="loading"><div class="loader"></div></div>
 
 <nav>
   <div class="logo">
@@ -154,55 +149,29 @@ footer {
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-text">
-
-    <h1>SUARAMU <span>LAYAK DIDENGAR</span></h1>
-
-    <p>
-      Divisi Advokasi HIMA TEM hadir sebagai ruang aman bagi mahasiswa untuk menyampaikan
-      aspirasi, keluhan, dan cerita tanpa rasa takut.
-    </p>
-
-    <p style="color:#888;">
-      Kami menjaga kerahasiaan, mendengarkan dengan empati,
-      dan berkomitmen menindaklanjuti setiap laporan.
-    </p>
-
-    <div class="badge">Aman & Rahasia</div>
-    <div class="badge">Didengar</div>
-    <div class="badge">Ditindaklanjuti</div>
-
-    <br><br>
-
-    <button onclick="document.querySelector('.container').scrollIntoView()">
-      Mulai Sekarang
-    </button>
-
+<section class="hero fade">
+  <div>
+    <h1>SUARAMU LAYAK DIDENGAR</h1>
+    <p>Ruang aman mahasiswa untuk berbicara dan didengar.</p>
+    <button onclick="scrollMenu()">Mulai</button>
   </div>
-
-  <img src="logo.png" width="250">
+  <img src="logo.png" width="220">
 </section>
 
-<!-- MENU -->
-<div class="container">
+<div class="container fade" id="menu">
 
   <div class="card">
     <h3>Laporkan Masalah</h3>
-    <p>Laporkan kejadian yang kamu alami</p>
     <button onclick="showPage('laporPage')">Masuk</button>
   </div>
 
   <div class="card">
     <h3>Kritik & Saran</h3>
-    <p>Berikan kritik dan saran untuk himpunan</p>
-    <button onclick="showPage('saranPage')">Masuk</button>
+    <button onclick="openAnon()">Masuk</button>
   </div>
 
   <div class="card">
     <h3>Teman Cerita</h3>
-    <p>Berbagi cerita dengan aman</p>
     <button onclick="showPage('ceritaPage')">Masuk</button>
   </div>
 
@@ -210,98 +179,34 @@ footer {
 
 <!-- LAPOR -->
 <div id="laporPage" class="page">
-  <h2>Laporkan Masalah</h2>
-  <p>Gunakan fitur ini untuk melaporkan kejadian di lingkungan kampus.</p>
-  <p class="privacy">Data bersifat rahasia.</p>
-  <button onclick="openForm('lapor')">Lanjut ke Form</button><br><br>
-  <button onclick="backHome()">Kembali</button>
-</div>
-
-<!-- KRITIK -->
-<div id="saranPage" class="page">
-  <h2>Kritik & Saran</h2>
-  <p>Sampaikan kritik dan saran secara bebas.</p>
-  <p class="privacy">Identitas tidak akan diketahui.</p>
-  <button onclick="openAnon()">Kritik & Saran</button><br><br>
+  <h2>Laporan</h2>
+  <button onclick="openForm()">Form</button><br><br>
   <button onclick="backHome()">Kembali</button>
 </div>
 
 <!-- CERITA -->
 <div id="ceritaPage" class="page">
   <h2>Teman Cerita</h2>
-  <p>Pilih cara kamu ingin berbagi cerita.</p>
 
-  <p class="privacy">
-  Semua cerita dijaga kerahasiaannya oleh Divisi Advokasi.  
-  Untuk cerita online, harap mencantumkan email karena percakapan lanjutan akan dilakukan melalui email.  
-  Mohon tidak melakukan spam.
-  </p>
+  <button onclick="ceritaLangsung()">Cerita Langsung</button>
 
-  <button onclick="ceritaLangsung()">Teman Cerita Langsung</button><br><br>
-
-  <h3 style="color:#00eaff;">Cerita Online</h3>
-
-  <form action="https://formspree.io/f/xdayjjob" method="POST" onsubmit="handleSubmit()">
-    <input type="text" name="nama" placeholder="Nama (opsional)"
-    style="width:80%;padding:10px;margin:10px;border-radius:8px;border:none;"><br>
-
-    <input type="email" name="email" placeholder="Email (wajib untuk respon)"
-    required style="width:80%;padding:10px;margin:10px;border-radius:8px;border:none;"><br>
-
-    <textarea name="cerita" placeholder="Tulis ceritamu..." required
-    style="width:80%;height:120px;padding:10px;margin:10px;border-radius:8px;border:none;"></textarea><br>
-
-    <button type="submit" id="btnKirim">Kirim Cerita</button>
+  <form action="https://formspree.io/f/xdayjjob" method="POST" onsubmit="kirim()">
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="cerita" placeholder="Ceritamu..." required></textarea>
+    <button type="submit">Kirim</button>
   </form>
 
-  <p id="notif" style="display:none;color:#00eaff;">Cerita berhasil dikirim 🙏</p>
-
-  <br>
   <button onclick="backHome()">Kembali</button>
 </div>
 
-<!-- PRIVASI -->
-<div style="padding:50px 20px;text-align:center;">
-  <h2 style="color:#00eaff;">Privasi & Keamanan</h2>
-  <p style="max-width:650px;margin:auto;color:#aaa;margin-top:15px;">
-  Semua data yang masuk akan dijaga kerahasiaannya dan hanya diakses oleh tim advokasi.
-  Kami berkomitmen melindungi identitas pelapor dan menangani setiap laporan secara profesional.
-  </p>
-</div>
-
-<!-- KONTAK -->
-<div style="padding:50px 20px;text-align:center;">
-  <h2 style="color:#00eaff;">Kontak</h2>
-
-  <p style="color:#aaa;">
-  Email:<br>
-  <a href="mailto:AdvokasiHimaTem26@gmail.com" style="color:#00eaff;">
-  AdvokasiHimaTem26@gmail.com
-  </a>
-  </p>
-
-  <p style="color:#aaa;margin-top:10px;">
-  Instagram:<br>
-  <a href="https://www.instagram.com/himatem.usd?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" style="color:#00eaff;">
-  @himatem.usd
-  </a>
-  </p>
-</div>
-<footer>
-© 2026/2027 HIMA TEM - Divisi Advokasi
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<div id="toast">Berhasil dikirim 🙏</div>
 
 <script>
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 80 },
-    size: { value: 3 },
-    color: { value: "#00eaff" },
-    move: { speed: 2 }
-  }
-});
+window.onload=()=>setTimeout(()=>document.getElementById("loading").style.display="none",800);
+
+function scrollMenu(){
+  document.getElementById("menu").scrollIntoView({behavior:"smooth"});
+}
 
 function showPage(id){
   document.querySelector(".hero").style.display="none";
@@ -312,7 +217,7 @@ function showPage(id){
 function backHome(){
   document.querySelector(".hero").style.display="flex";
   document.querySelector(".container").style.display="flex";
-  document.querySelectorAll(".page").forEach(p => p.style.display="none");
+  document.querySelectorAll(".page").forEach(p=>p.style.display="none");
 }
 
 function openForm(){
@@ -327,12 +232,18 @@ function ceritaLangsung(){
   window.open("https://docs.google.com/forms/d/e/1FAIpQLSf66VI_GwE8l_5kfrj0xlXivlcNGh1FmhfuBULLyQ-BDACAsw/viewform");
 }
 
-function handleSubmit(){
-  document.getElementById("btnKirim").innerText="Mengirim...";
-  setTimeout(()=>{
-    document.getElementById("notif").style.display="block";
-  },1000);
+function kirim(){
+  setTimeout(()=>document.getElementById("toast").style.display="block",500);
 }
+
+/* SCROLL ANIM */
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+  faders.forEach(el=>{
+    const top=el.getBoundingClientRect().top;
+    if(top<window.innerHeight-50){el.classList.add('show');}
+  });
+});
 </script>
 
 </body>
