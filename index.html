@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HIMA TEM - Advokasi</title>
-
-<link rel="icon" href="logo.png">
-
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -138,6 +129,32 @@ button:hover { background:#00c3d9; }
   margin:15px auto;
 }
 
+/* 🔥 FIX INPUT DARK MODE + PREMIUM STYLE */
+input, textarea {
+  width:80%;
+  padding:10px;
+  margin:10px;
+  border-radius:10px;
+  border:none;
+
+  background:rgba(255,255,255,0.08);
+  color:white;
+  backdrop-filter:blur(5px);
+  transition:0.3s;
+}
+
+/* placeholder */
+input::placeholder, textarea::placeholder {
+  color:#aaa;
+}
+
+/* saat diketik */
+input:focus, textarea:focus {
+  outline:none;
+  box-shadow:0 0 10px #00eaff;
+  background:rgba(255,255,255,0.15);
+}
+
 /* SECTION */
 .section {
   text-align:center;
@@ -163,194 +180,3 @@ button:hover { background:#00c3d9; }
   .hero img { margin-top:20px; }
 }
 </style>
-</head>
-
-<body>
-
-<div id="particles-js"></div>
-
-<nav>
-  <div class="logo">
-    <img src="logo.png">
-    <h2>HIMA TEM</h2>
-  </div>
-
-  <div>
-    <a href="#">Home</a>
-    <a href="#menu">Menu</a>
-    <a href="#faq">FAQ</a>
-    <a href="#privacy">Privasi</a>
-    <a href="#kontak">Kontak</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-text">
-
-    <h1>SUARAMU LAYAK DIDENGAR</h1>
-
-    <p>
-      Kamu tidak sendiri. Kami siap mendengarkan dan membantu setiap permasalahan mahasiswa.
-    </p>
-
-    <p style="color:#888;">
-      Semua laporan dijaga kerahasiaannya dan akan ditindaklanjuti oleh tim advokasi.
-    </p>
-
-    <div class="badge">Aman & Rahasia</div>
-    <div class="badge">Didengar</div>
-    <div class="badge">Ditindaklanjuti</div>
-
-    <br><br>
-
-    <button onclick="document.querySelector('.container').scrollIntoView()">
-      Mulai Sekarang
-    </button>
-
-  </div>
-
-  <img src="logo.png" width="250">
-</section>
-
-<!-- MENU -->
-<div class="container" id="menu">
-
-  <div class="card">
-    <h3>Laporkan Masalah</h3>
-    <p>Laporkan kejadian yang kamu alami dan yang kamu ketahui</p>
-    <button onclick="showPage('laporPage')">Masuk</button>
-  </div>
-
-  <div class="card">
-    <h3>Kritik & Saran</h3>
-    <p>Berikan kritik dan saran untuk prodi & himpunan</p>
-    <button onclick="showPage('saranPage')">Masuk</button>
-  </div>
-
-  <div class="card">
-    <h3>Teman Cerita</h3>
-    <p>Kamu tidak sendirian mari Berbagi cerita dengan aman</p>
-    <button onclick="showPage('ceritaPage')">Masuk</button>
-  </div>
-
-</div>
-
-<!-- LAPOR -->
-<div id="laporPage" class="page">
-  <h2>Laporkan Masalah</h2>
-  <p>Gunakan fitur ini untuk melaporkan kejadian di lingkungan kampus.</p>
-  <p class="privacy">Akan diproses dalam 1x24 jam.</p>
-  <button onclick="openForm()">Lanjut ke Form</button><br><br>
-  <button onclick="backHome()">Kembali</button>
-</div>
-
-<!-- KRITIK -->
-<div id="saranPage" class="page">
-  <h2>Kritik & Saran</h2>
-  <p>Sampaikan kritik dan saran secara bebas.</p>
-  <p class="privacy">Identitas tidak akan diketahui.</p>
-  <button onclick="openAnon()">Kritik & Saran</button><br><br>
-  <button onclick="backHome()">Kembali</button>
-</div>
-
-<!-- CERITA -->
-<div id="ceritaPage" class="page">
-  <h2>Teman Cerita</h2>
-  <p>Pilih cara kamu ingin berbagi cerita.</p>
-
-  <p class="privacy">
-  Semua cerita dijaga kerahasiaannya oleh Divisi Advokasi.
-  Untuk cerita online, harap mencantumkan email.
-  Mohon tidak melakukan spam.
-  </p>
-
-  <button onclick="ceritaLangsung()"> Cerita Langsung(bertemu)</button><br><br>
-
-  <h3 style="color:#00eaff;">Cerita Online</h3>
-
-  <form action="https://formspree.io/f/xdayjjob" method="POST" onsubmit="handleSubmit()">
-    <input type="text" name="nama" placeholder="Nama (opsional)">
-    <input type="email" name="email" placeholder="Email (wajib)" required>
-    <textarea name="cerita" placeholder="Tulis ceritamu..." required></textarea>
-    <button type="submit" id="btnKirim">Kirim Cerita</button>
-  </form>
-
-  <br>
-  <button onclick="backHome()">Kembali</button>
-</div>
-
-<!-- FAQ -->
-<div class="section" id="faq">
-  <h2>FAQ</h2>
-  <p>Apakah anonim? Ya.</p>
-  <p>Apakah aman? Ya.</p>
-  <p>Apakah laporan ditindaklanjuti? Ya.</p>
-</div>
-
-<!-- PRIVASI -->
-<div class="section" id="privacy">
-  <h2>Privasi & Keamanan</h2>
-  <p>Data dijaga kerahasiaannya dan hanya diakses oleh tim advokasi.</p>
-</div>
-
-<!-- KONTAK -->
-<div class="section" id="kontak">
-  <h2>Kontak</h2>
-
-  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=AdvokasiHimaTem26@gmail.com" target="_blank">
-    📧 Email:AdvokasiHimaTem26@gmail.com
-  </a><br><br>
-
-  <a href="https://instagram.com/himatem.usd" target="_blank">
-    📷 Instagram:himatem.usd
-  </a>
-</div>
-
-<footer>
-© 2026/2027 HIMA TEM - Divisi Advokasi
-</footer>
-
-<div id="toast">Pesan berhasil dikirim 🙏</div>
-
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
-<script>
-particlesJS("particles-js", {
-  particles:{number:{value:80},size:{value:3},color:{value:"#00eaff"}}
-});
-
-function showPage(id){
-  document.querySelector(".hero").style.display="none";
-  document.querySelector(".container").style.display="none";
-  document.getElementById(id).style.display="block";
-}
-
-function backHome(){
-  document.querySelector(".hero").style.display="flex";
-  document.querySelector(".container").style.display="flex";
-  document.querySelectorAll(".page").forEach(p=>p.style.display="none");
-}
-
-function openForm(){
-  window.open("https://docs.google.com/forms/d/e/1FAIpQLSelJCJ8AZJ-ZVruC2YTLw15faBU29II84A8YV8ocYZlHcBdzQ/viewform");
-}
-
-function openAnon(){
-  window.open("https://ngl.link/advokasihimatem","_blank");
-}
-
-function ceritaLangsung(){
-  window.open("https://docs.google.com/forms/d/e/1FAIpQLSf66VI_GwE8l_5kfrj0xlXivlcNGh1FmhfuBULLyQ-BDACAsw/viewform");
-}
-
-function handleSubmit(){
-  document.getElementById("btnKirim").innerText="Mengirim...";
-  setTimeout(()=>{
-    document.getElementById("toast").style.display="block";
-  },800);
-}
-</script>
-
-</body>
-</html>
