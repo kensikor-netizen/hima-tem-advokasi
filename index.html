@@ -130,16 +130,8 @@ button:hover { background:#00c3d9; }
 .privacy {
   font-size:13px;
   color:gray;
-  max-width:600px;
+  max-width:650px;
   margin:15px auto;
-}
-
-input, textarea {
-  outline:none;
-}
-
-input:focus, textarea:focus {
-  box-shadow:0 0 10px #00eaff;
 }
 
 /* FOOTER */
@@ -240,10 +232,9 @@ footer {
   <p>Pilih cara kamu ingin berbagi cerita.</p>
 
   <p class="privacy">
-  Semua cerita dijaga kerahasiaannya oleh Divisi Advokasi=> bagi yang memilih cerita online pastikan sebelum bercerita kalian telah memasukan email 
-    karena percakapn di web ini hanya awal saja dan hanya boleh mengirimkan sekali saja karena untuk melanjutkan percakapan akan dilakukan kirim mengirim pesan menggunakan email
-    dilarang untuk spam.
-    
+  Semua cerita dijaga kerahasiaannya oleh Divisi Advokasi.  
+  Untuk cerita online, harap mencantumkan email karena percakapan lanjutan akan dilakukan melalui email.  
+  Mohon tidak melakukan spam.
   </p>
 
   <button onclick="ceritaLangsung()">Teman Cerita Langsung</button><br><br>
@@ -251,10 +242,13 @@ footer {
   <h3 style="color:#00eaff;">Cerita Online</h3>
 
   <form action="https://formspree.io/f/xdayjjob" method="POST" onsubmit="handleSubmit()">
-    <input type="text" name="nama" placeholder="Nama (opsional)" minlength="2"
+    <input type="text" name="nama" placeholder="Nama (opsional)"
     style="width:80%;padding:10px;margin:10px;border-radius:8px;border:none;"><br>
 
-    <textarea name="cerita" placeholder="Tulis ceritamu..." required minlength="10"
+    <input type="email" name="email" placeholder="Email (wajib untuk respon)"
+    required style="width:80%;padding:10px;margin:10px;border-radius:8px;border:none;"><br>
+
+    <textarea name="cerita" placeholder="Tulis ceritamu..." required
     style="width:80%;height:120px;padding:10px;margin:10px;border-radius:8px;border:none;"></textarea><br>
 
     <button type="submit" id="btnKirim">Kirim Cerita</button>
@@ -264,6 +258,34 @@ footer {
 
   <br>
   <button onclick="backHome()">Kembali</button>
+</div>
+
+<!-- PRIVASI -->
+<div style="padding:50px 20px;text-align:center;">
+  <h2 style="color:#00eaff;">Privasi & Keamanan</h2>
+  <p style="max-width:650px;margin:auto;color:#aaa;margin-top:15px;">
+  Semua data yang masuk akan dijaga kerahasiaannya dan hanya diakses oleh tim advokasi.
+  Kami berkomitmen melindungi identitas pelapor dan menangani setiap laporan secara profesional.
+  </p>
+</div>
+
+<!-- KONTAK -->
+<div style="padding:50px 20px;text-align:center;">
+  <h2 style="color:#00eaff;">Kontak</h2>
+
+  <p style="color:#aaa;">
+  Email:<br>
+  <a href="mailto:AdvokasiHimaTem26@gmail.com" style="color:#00eaff;">
+  AdvokasiHimaTem26@gmail.com
+  </a>
+  </p>
+
+  <p style="color:#aaa;margin-top:10px;">
+  Instagram:<br>
+  <a href="https://instagram.com/hitatem.usd" target="_blank" style="color:#00eaff;">
+  @himatem.usd
+  </a>
+  </p>
 </div>
 
 <footer>
@@ -294,10 +316,8 @@ function backHome(){
   document.querySelectorAll(".page").forEach(p => p.style.display="none");
 }
 
-function openForm(type){
-  if(type==="lapor"){
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLSelJCJ8AZJ-ZVruC2YTLw15faBU29II84A8YV8ocYZlHcBdzQ/viewform");
-  }
+function openForm(){
+  window.open("https://docs.google.com/forms/d/e/1FAIpQLSelJCJ8AZJ-ZVruC2YTLw15faBU29II84A8YV8ocYZlHcBdzQ/viewform");
 }
 
 function openAnon(){
