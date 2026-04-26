@@ -138,29 +138,6 @@ button:hover { background:#00c3d9; }
   margin:15px auto;
 }
 
-/* ✅ FIX INPUT DARK MODE */
-input, textarea {
-  width:80%;
-  padding:10px;
-  margin:10px;
-  border-radius:10px;
-  border:none;
-  background:rgba(255,255,255,0.1);
-  color:white;
-}
-
-/* placeholder */
-input::placeholder, textarea::placeholder {
-  color:#aaa;
-}
-
-/* focus efek */
-input:focus, textarea:focus {
-  outline:none;
-  box-shadow:0 0 10px #00eaff;
-  background:rgba(255,255,255,0.15);
-}
-
 /* SECTION */
 .section {
   text-align:center;
@@ -207,42 +184,90 @@ input:focus, textarea:focus {
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-text">
+
     <h1>SUARAMU LAYAK DIDENGAR</h1>
-    <p>Kamu tidak sendiri. Kami siap mendengarkan dan membantu setiap permasalahan mahasiswa.</p>
-    <p style="color:#888;">Semua laporan dijaga kerahasiaannya dan akan ditindaklanjuti oleh tim advokasi.</p>
+
+    <p>
+      Kamu tidak sendiri. Kami siap mendengarkan dan membantu setiap permasalahan mahasiswa.
+    </p>
+
+    <p style="color:#888;">
+      Semua laporan dijaga kerahasiaannya dan akan ditindaklanjuti oleh tim advokasi.
+    </p>
 
     <div class="badge">Aman & Rahasia</div>
     <div class="badge">Didengar</div>
     <div class="badge">Ditindaklanjuti</div>
 
     <br><br>
-    <button onclick="document.querySelector('.container').scrollIntoView()">Mulai Sekarang</button>
+
+    <button onclick="document.querySelector('.container').scrollIntoView()">
+      Mulai Sekarang
+    </button>
+
   </div>
 
   <img src="logo.png" width="250">
 </section>
 
+<!-- MENU -->
 <div class="container" id="menu">
+
   <div class="card">
     <h3>Laporkan Masalah</h3>
+    <p>Laporkan kejadian yang kamu alami</p>
     <button onclick="showPage('laporPage')">Masuk</button>
   </div>
 
   <div class="card">
     <h3>Kritik & Saran</h3>
+    <p>Berikan kritik dan saran untuk himpunan</p>
     <button onclick="showPage('saranPage')">Masuk</button>
   </div>
 
   <div class="card">
     <h3>Teman Cerita</h3>
+    <p>Berbagi cerita dengan aman</p>
     <button onclick="showPage('ceritaPage')">Masuk</button>
   </div>
+
 </div>
 
+<!-- LAPOR -->
+<div id="laporPage" class="page">
+  <h2>Laporkan Masalah</h2>
+  <p>Gunakan fitur ini untuk melaporkan kejadian di lingkungan kampus.</p>
+  <p class="privacy">Akan diproses dalam 1x24 jam.</p>
+  <button onclick="openForm()">Lanjut ke Form</button><br><br>
+  <button onclick="backHome()">Kembali</button>
+</div>
+
+<!-- KRITIK -->
+<div id="saranPage" class="page">
+  <h2>Kritik & Saran</h2>
+  <p>Sampaikan kritik dan saran secara bebas.</p>
+  <p class="privacy">Identitas tidak akan diketahui.</p>
+  <button onclick="openAnon()">Kritik & Saran</button><br><br>
+  <button onclick="backHome()">Kembali</button>
+</div>
+
+<!-- CERITA -->
 <div id="ceritaPage" class="page">
   <h2>Teman Cerita</h2>
+  <p>Pilih cara kamu ingin berbagi cerita.</p>
+
+  <p class="privacy">
+  Semua cerita dijaga kerahasiaannya oleh Divisi Advokasi.
+  Untuk cerita online, harap mencantumkan email.
+  Mohon tidak melakukan spam.
+  </p>
+
+  <button onclick="ceritaLangsung()">Teman Cerita Langsung</button><br><br>
+
+  <h3 style="color:#00eaff;">Cerita Online</h3>
 
   <form action="https://formspree.io/f/xdayjjob" method="POST" onsubmit="handleSubmit()">
     <input type="text" name="nama" placeholder="Nama (opsional)">
@@ -251,8 +276,40 @@ input:focus, textarea:focus {
     <button type="submit" id="btnKirim">Kirim Cerita</button>
   </form>
 
+  <br>
   <button onclick="backHome()">Kembali</button>
 </div>
+
+<!-- FAQ -->
+<div class="section" id="faq">
+  <h2>FAQ</h2>
+  <p>Apakah anonim? Ya.</p>
+  <p>Apakah aman? Ya.</p>
+  <p>Apakah laporan ditindaklanjuti? Ya.</p>
+</div>
+
+<!-- PRIVASI -->
+<div class="section" id="privacy">
+  <h2>Privasi & Keamanan</h2>
+  <p>Data dijaga kerahasiaannya dan hanya diakses oleh tim advokasi.</p>
+</div>
+
+<!-- KONTAK -->
+<div class="section" id="kontak">
+  <h2>Kontak</h2>
+
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=AdvokasiHimaTem26@gmail.com" target="_blank">
+    Email
+  </a><br><br>
+
+  <a href="https://instagram.com/himatem.usd" target="_blank">
+    Instagram
+  </a>
+</div>
+
+<footer>
+© 2026/2027 HIMA TEM - Divisi Advokasi
+</footer>
 
 <div id="toast">Pesan berhasil dikirim 🙏</div>
 
@@ -273,6 +330,18 @@ function backHome(){
   document.querySelector(".hero").style.display="flex";
   document.querySelector(".container").style.display="flex";
   document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+}
+
+function openForm(){
+  window.open("https://docs.google.com/forms/d/e/1FAIpQLSelJCJ8AZJ-ZVruC2YTLw15faBU29II84A8YV8ocYZlHcBdzQ/viewform");
+}
+
+function openAnon(){
+  window.open("https://ngl.link/advokasihimatem","_blank");
+}
+
+function ceritaLangsung(){
+  window.open("https://docs.google.com/forms/d/e/1FAIpQLSf66VI_GwE8l_5kfrj0xlXivlcNGh1FmhfuBULLyQ-BDACAsw/viewform");
 }
 
 function handleSubmit(){
